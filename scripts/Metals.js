@@ -1,8 +1,7 @@
 import { getMetals, setMetal } from "./database.js"
-import { Orders } from "./Orders.js"
+// import { Orders } from "./Orders.js"
 
 const metals = getMetals()
-const order = Orders()
 
 document.addEventListener(
     "change",
@@ -12,19 +11,6 @@ document.addEventListener(
         }
     }
 )
-
-// const foundMetal = metals.find((metal) => {
-//         return metal.id === order.metalId
-//     }
-// )
-
-// const totalCost = foundMetal.price
-
-// const costString = totalCost.toLocaleString("en-US", {
-//     style: "currency",
-//     currency: "USD"
-// })
-
 
 export const Metals = () => {
     let html = "<ul>"
