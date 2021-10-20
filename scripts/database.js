@@ -25,12 +25,30 @@ const database = {
         { id: 4, metal: "Platinum", price: 795.45 },
         { id: 5, metal: "Palladium", price: 1241.0 }
     ],
+    pricingTypes: [
+        {
+            id: 1,
+            type: "Ring",
+            price: 1
+        },
+        {
+            id: 2,
+            type: "Earrings",
+            price: 2
+        },
+        {
+            id: 3,
+            type: "Necklace",
+            price: 3
+        }
+    ],
     customOrders: [
         {
             id: 1,
             metalId: 3,
             sizeId: 2,
             styleId: 3,
+            typeId: 1,
             timestamp: 1614659931693
         }
     ],
@@ -39,16 +57,22 @@ const database = {
 }
 
 export const getMetals = () => {
-    return database.metals.map(metal => ({...metal}))
+    return database.metals.map(metal => ({ ...metal }))
 }
 export const getSizes = () => {
-    return database.sizes.map(size => ({...size}))
+    return database.sizes.map(size => ({ ...size }))
 }
 export const getStyles = () => {
-    return database.styles.map(style => ({...style}))
+    return database.styles.map(style => ({ ...style }))
+}
+export const getTypes = () => {
+    return database.pricingTypes.map(type => ({...type}))
 }
 export const getOrders = () => {
-    return database.customOrders.map(order => ({...order}))
+    return database.customOrders.map(order => ({ ...order }))
+}
+export const setTypes = (id) => {
+    database.orderBuilder.typeId = id
 }
 export const setMetal = (id) => {
     database.orderBuilder.metalId = id
@@ -60,10 +84,10 @@ export const setStyle = (id) => {
     database.orderBuilder.styleId = id
 }
 export const addCustomOrder = () => {
-    const newOrder = {...database.orderBuilder}
-    const lastIndex = database.customOrders.length-1
-    newOrder.id = database.customOrders[lastIndex].id +1
-    newOrder.timestamp=Date.now()
+    const newOrder = { ...database.orderBuilder }
+    const lastIndex = database.customOrders.length - 1
+    newOrder.id = database.customOrders[lastIndex].id + 1
+    newOrder.timestamp = Date.now()
     database.customOrders.push(newOrder)
     database.orderBuilder = {}
     document.dispatchEvent(new CustomEvent("stateChanged"))
