@@ -1,4 +1,4 @@
-import { getMetals, getOrders, getSizes, getStyles, getTypes } from "./database.js"
+import { getMetals, getOrders, getSizes, getStyles, getTypes } from "./dataAccess.js"
 
 const buildOrderListItem = (order) => {
     const metals = getMetals()

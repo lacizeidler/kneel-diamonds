@@ -1,4 +1,4 @@
-import { getTypes, setTypes } from "./database.js";
+import { getTypes, setTypes } from "./dataAccess.js";
 
 const types = getTypes()
 
@@ -17,7 +17,7 @@ export const Types = () => {
     // This is how you have been converting objects to <li> elements
     for (const typeObj of types) {
         html += `<li>
-            <input type="radio" name="type" value="${typeObj.id}" /> ${typeObj.type}
+            <input type="radio" checked ="checked" name="type" value="${typeObj.id}" /> ${typeObj.type}
         </li>`
     }
 
